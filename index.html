@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Rolling Wrench AI Demo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <aside id="sideMenu" class="sideMenu">
+    <div class="menuTitle">ROLLING WRENCH AI</div>
+    <button onclick="go('home')">🏠 Home</button>
+    <button onclick="go('ai')">🤖 AI Diagnosis</button>
+    <button onclick="go('faults')">⚠️ Fault Codes</button>
+    <button onclick="go('wiring')">🧩 Wiring Diagrams</button>
+    <button onclick="go('repair')">🔧 Repair Assist</button>
+    <button onclick="go('trucks')">🚛 Trucks</button>
+    <button onclick="toggleMenu()">Close Menu</button>
+  </aside>
+
+  <main class="appShell">
+    <header class="topBar">
+      <button class="iconBtn" onclick="toggleMenu()">☰</button>
+      <div class="brandBlock">
+        <div class="brandMain">ROLLING WRENCH <span>AI</span></div>
+        <div class="brandSub">TOTAL DIAGNOSTIC COMMAND</div>
+      </div>
+      <div class="topStatus"><i class="onlineDot"></i> ONLINE</div>
+    </header>
+
+    <section id="home" class="screen active">
+      <article class="truckCard profileRow">
+        <div>
+          <div class="sectionKicker">ACTIVE TRUCK</div>
+          <h1>2022 FREIGHTLINER<br/>CASCADIA 126</h1>
+          <div class="truckData">
+            <div class="dataCell"><small>VIN</small><strong>1FUJGEDV8NL123456</strong></div>
+            <div class="dataCell"><small>ENGINE</small><strong>DD15 14.8L</strong></div>
+            <div class="dataCell"><small>TRANS</small><strong>DT12 AUTO</strong></div>
+            <div class="dataCell"><small>ODOMETER</small><strong>432,985 MI</strong></div>
+            <button class="changeTruckBtn" onclick="go('trucks')">CHANGE TRUCK</button>
+          </div>
+        </div>
+        <div class="truckImage"><div class="truckShape">🚛</div></div>
+      </article>
+
+      <section class="searchPanel">
+        <div class="sectionKicker">COMMAND CENTER</div>
+        <div class="searchBox"><span>💬</span><textarea placeholder="Ask AI diagnostics, parts, service steps..."></textarea></div>
+        <button class="searchBtn" onclick="go('ai')">ASK ROLLING WRENCH AI</button>
+      </section>
+
+      <div class="toolGrid">
+        <button class="toolCard" onclick="go('ai')"><div class="toolIcon">🤖</div><h2>AI DIAGNOSIS</h2><p>Troubleshoot with guided logic.</p><span>›</span></button>
+        <button class="toolCard" onclick="go('wiring')"><div class="toolIcon">🧩</div><h2>WIRING DIAGRAMS</h2><p>Interactive circuit paths.</p><span>›</span></button>
+        <button class="toolCard" onclick="go('faults')"><div class="toolIcon">⚠️</div><h2>FAULT CODES</h2><p>DTC lookup and explanations.</p><span>›</span></button>
+        <button class="toolCard" onclick="go('repair')"><div class="toolIcon">🔧</div><h2>REPAIR ASSIST</h2><p>Step-by-step job guidance.</p><span>›</span></button>
+      </div>
+    </section>
+
+    <section id="ai" class="screen">
+      <button class="backBtn" onclick="go('home')">‹ BACK</button>
+      <h1 class="heroTitle">AI DIAGNOSIS</h1>
+      <p class="heroSubtitle">Describe the complaint and get a clean diagnostic path.</p>
+      <div class="smartCard">
+        <label class="bigLabel">DESCRIBE THE ISSUE</label>
+        <textarea class="bigText" placeholder="Example: Truck cranks but won’t start, no power to ECM, blowing fuses..."></textarea>
+        <button class="searchBtn">RUN AI DIAGNOSIS</button>
+      </div>
+      <div class="resultBox">
+        <div class="oracleTitle">RECENT DIAGNOSES</div>
+        <div class="listRow"><b>Cranks no start, no fuel pressure</b><span>SOLVED ›</span></div>
+        <div class="listRow"><b>DEF system derate at idle</b><span>SOLVED ›</span></div>
+        <div class="listRow"><b>ABS light, code C1202</b><span>SOLVED ›</span></div>
+      </div>
+    </section>
+
+    <section id="wiring" class="screen">
+      <button class="backBtn" onclick="go('home')">‹ BACK</button>
+      <h1 class="heroTitle">WIRING DIAGRAMS</h1>
+      <div class="searchPanel"><div class="searchBox"><span>🔎</span><textarea placeholder="Search components, systems..."></textarea></div></div>
+      <div class="quickDock"><button>ENGINE</button><button>TRANS</button><button>ABS</button><button>BODY</button><button>CAN</button></div>
+      <div class="resultBox">
+        <div class="listRow iconRow"><b>DD15 Engine Control System<br/><small>Electrical schematic</small></b><span>›</span></div>
+        <div class="listRow iconRow"><b>Aftertreatment System<br/><small>DEF / SCR circuit</small></b><span>›</span></div>
+        <div class="listRow iconRow"><b>Power Distribution<br/><small>Fuses & relays</small></b><span>›</span></div>
+        <div class="listRow iconRow"><b>J1939 Datalink<br/><small>Communication network</small></b><span>›</span></div>
+      </div>
+    </section>
+
+    <section id="faults" class="screen">
+      <button class="backBtn" onclick="go('home')">‹ BACK</button>
+      <h1 class="heroTitle">FAULT CODES</h1>
+      <div class="resultBox faultList">
+        <div><b>SPN 110 &nbsp; FMI 3</b><em>Active</em><p>Coolant Temperature Above Normal Operating Range</p></div>
+        <div><b>SPN 157 &nbsp; FMI 18</b><em>Active</em><p>Engine Fuel Rail Pressure Data Valid But Below Normal</p></div>
+        <div><b>SPN 521 &nbsp; FMI 0</b><em>Inactive</em><p>Exhaust Gas Temperature Sensor Circuit</p></div>
+      </div>
+      <button class="searchBtn">CLEAR INACTIVE CODES</button>
+    </section>
+
+    <section id="repair" class="screen">
+      <button class="backBtn" onclick="go('home')">‹ BACK</button>
+      <h1 class="heroTitle">REPAIR ASSIST</h1>
+      <div class="smartCard">
+        <div class="stepDots"><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b></div>
+        <div class="oracleTitle">VERIFY COMPLAINT</div>
+        <p>Confirm the issue with the driver and perform a road test when possible.</p>
+        <div class="toolBox">🧰 Tools: Scan Tool • Test Light • DVOM</div>
+        <button class="searchBtn">NEXT STEP</button>
+      </div>
+    </section>
+
+    <section id="trucks" class="screen">
+      <button class="backBtn" onclick="go('home')">‹ BACK</button>
+      <h1 class="heroTitle">SELECT TRUCK</h1>
+      <div class="resultBox truckList">
+        <div class="truckPick active">🚛 <b>2022 FREIGHTLINER CASCADIA 126</b><span>✓</span></div>
+        <div class="truckPick">🚛 <b>2021 FREIGHTLINER CASCADIA 126</b><span>›</span></div>
+        <div class="truckPick">🚛 <b>2020 FREIGHTLINER M2 106</b><span>›</span></div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottomNav">
+    <button class="active" onclick="go('home')">⌂<span>HOME</span></button>
+    <button onclick="go('ai')">⌕<span>AI</span></button>
+    <button onclick="go('trucks')">▰<span>TRUCKS</span></button>
+    <button onclick="go('faults')">⚠<span>CODES</span></button>
+    <button onclick="toggleMenu()">☷<span>MORE</span></button>
+  </nav>
+  <script src="script.js"></script>
+</body>
+</html>
